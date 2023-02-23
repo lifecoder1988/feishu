@@ -71,6 +71,7 @@ type EventRequestBody struct {
 	// Sender is the message sender
 	Sender  EventRequestSender `json:"sender"`
 	Message struct {
+		MessageID string `json:"message_id"`
 		// ChatID is the chat room id, e.g. oc_7a9aa4739f81bd2e61108fecbe12bf93
 		ChatID string `json:"chat_id"`
 		// ChatType is the chat type, options: group | p2p, e.g. group
