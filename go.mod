@@ -1,4 +1,4 @@
-module github.com/go-zoox/feishu
+module github.com/lifecoder1988/feishu
 
 go 1.18
 

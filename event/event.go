@@ -45,6 +45,12 @@ type EventRequest struct {
 	Type      string `json:"type"`
 	// 已加密
 	Encrypt string `json:"encrypt"`
+
+	OpenId string `json:"open_id"`
+	UserId string `json:"user_id"`
+	OpenMessageId string `json:"open_message_id"`
+	OpenChatId string `json:"open_chat_id"`
+	Action string `json:"action"`
 }
 
 type EventResponse struct {
@@ -134,6 +140,11 @@ func (e *EventRequest) IsGroupChat() bool {
 func (e *EventRequest) IsP2pChat() bool {
 	return e.ChatType() == "p2p"
 }
+
+func (e *EventRequest) IsCardMessage() bool {
+	return e.OpenMessageId != ""
+}
+
 
 func (e *EventRequest) EventType() string {
 	return e.Header.EventType
