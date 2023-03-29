@@ -32,6 +32,13 @@ func (e *event) OnChatReceiveMessage(handler func(content string, request *Event
 	return e.request.OnChatReceiveMessage(e.client, handler)
 }
 
+type CardActionValue struct {
+	Key string  `json:"key"`
+}
+type CardAction struct {
+	Value CardActionValue  `json:"value"`
+	Tag string  `json:"tag"`
+}
 type EventRequest struct {
 	// Scheme is api version, e.g. 2.0
 	Schema string             `json:"schema"`
@@ -50,7 +57,7 @@ type EventRequest struct {
 	UserId string `json:"user_id"`
 	OpenMessageId string `json:"open_message_id"`
 	OpenChatId string `json:"open_chat_id"`
-	Action string `json:"action"`
+	Action CardAction `json:"action"`
 }
 
 type EventResponse struct {
