@@ -178,11 +178,11 @@ type MessageHandler = func(content string, request *EventRequest, reply MessageR
 //
 // - 事件描述文档链接:https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/reference/im-v1/message/events/receive
 func (e *EventRequest) OnChatReceiveMessage(client client.Client, handler MessageHandler) error {
-	if !e.IsChat() {
+	if !e.IsCardMessage() && !e.IsChat() {
 		return nil
 	}
 
-	if e.EventType() != "im.message.receive_v1" {
+	if !e.IsCardMessage() && e.EventType() != "im.message.receive_v1" {
 		return nil
 	}
 
